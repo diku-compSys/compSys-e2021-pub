@@ -1,10 +1,10 @@
-# Course Description
+# Course Description for Computer Systems
 
-This course is a general introduction to computer systems. You will learn how computers works at a basic but fundamental level and how this reflects to the programs that you write. We will cover topics from Machine architecture, Operating Systems, Computer Networks, and basic IT-Security. We will also introduce you to the C programming language, which will be used throughout the course.
+CompSys is giving a general introduction to computer systems. You will learn how computers works at a basic but fundamental level, how this reflects to the programs that you write, and understand the performance characteristic for these. We will cover topics from Machine architecture, Operating Systems, Computer Networks, and basic IT-Security. We will also introduce you to the C programming language, which will be used throughout the course.
 
-Make sure that you read all the following carefully.
+Make sure that you read all the following carefully and be aware of updates.
 
-## Preparation for CompSys
+### Preparation for CompSys
 CompSys have gotten a reputation of being both a hard and informative course. As you can see below (and the course description), we will cover a lot of different topics that conceptually are very different, in a short time. It is therefore important that you are ready for the course when we start in September, avoiding to fall behind during the first weeks.
 
 We do not ask you to read ahead in the material. However, most of you are still inexperienced programmers and CompSys in very heavy on programming and program understanding. You need to think of programming as a _craft_, like playing an instrument. You have during the first year learned the basics of how it works. But if you lay it away over the summer (do not program for two months) you will lose much of these skills that you have gain over the first year.
@@ -13,6 +13,14 @@ We do not ask you to read ahead in the material. However, most of you are still 
 
 <!-- It is also important that you have looked into the tools that are needed for the course, so we encourage you to look at the [Tools page](tools/README.md).
  -->
+
+<!-- ### Teaching philosophy -->
+
+
+
+### Github as course page
+Most material will be posted to Github in this repository. We recommend that you clone it to your machine and that you follow the updates that are made, by reading the log.
+
 
 ## Short on Course Structure
 In the following is given a short overall description of the course. More details can be found further down.
@@ -31,7 +39,7 @@ BOH and KR will be available at Academic Books at Biocenteret (http://www.academ
 The general outline of CompSys will be the following:
 
  * Week 36-37: Introduction to the abstract computing machine, C programming and data representation
- * Week 38-40: Computer networks and security - application and transport
+ * Week 38-40: Computer networks and security - application and transport layer
  * Week 41: Memory hierarchy and caching
  * Week 42: Fall break
  * Week 43-45: Operating systems
@@ -39,9 +47,9 @@ The general outline of CompSys will be the following:
  * Week 47-48: Operating systems cont.
  * Week 48-51: Machine architecture and assembler programming
  * Week 52: Christmas vacation
- * Week 1-2: Computer networks and security - network and link
+ * Week 1-2: Computer networks and security - network and link layer
  * Week 3: Exam preparation and question hour
- * Week 4: 4 hour written exam
+ * Week 4: Exam
 
 ### Teaching in Block 1 exam period
 Be aware that CompSys is a semester course, which means that we will be teaching (including having normal exercise and assignments) throughout the exam period (weeks 44 and 45) of Block 1.
@@ -53,7 +61,7 @@ We will later publish example sets based on the previous exam iteration and furt
 ### Exercises and Cafées
 The course will have both class exercises and open café sessions. The class exercises fill focus on smaller exercises that will make you better understand material from the lectures, prepare you for the details of the assignments, or prepare you for the exam.
 
-The café sessions will, on the other hand, mainly be your possibility to get help with the assignments. However, it will also be possible to ask about exercises and other material. Also different teachers will (mainly on Wednesdays) also be presents, so you can ask anything in an informal setting.
+The café sessions will, on the other hand, mainly be your possibility to get help with the assignments. However, it will also be possible to ask about exercises and other material. Also teachers will (mainly on Wednesdays) also be presents, so you can ask anything in an informal setting.
 
 ### Assignments and qualification for the exam
 To qualify for the exam, a minimum number of points must be gained through the assignments. On purpose, to achieve this limit requires a basic understanding of the programming tasks of the assignments (including presentation of this though test and a report), but not a full understanding.
@@ -61,7 +69,7 @@ To qualify for the exam, a minimum number of points must be gained through the a
 It is also important to note, that the main purpose of the assignment is _not_ to prepare you for the exam; that is what the exercise classes are for. The assignments will focus on larger implementations and the practical learning goals of the course. Some questions in the exam will relate to the assignments, but qualifying of the exam (and even fully solving the assignments) will not be enough preparation to pass the exam. You need to make the exercises and the best way is to come to the exercise classes.
 
 ## Manning
-Instructors:
+Teachers:
  * Michael Kirkedal Thomsen (course organiser)
  * Finn Schirmer Andersen
  * Troels Henriksen
