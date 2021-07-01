@@ -4,12 +4,12 @@ CompSys is giving a general introduction to computer systems. You will learn how
 
 Make sure that you read all the following carefully and be aware of updates.
 
-### Preparation for CompSys
+### Maintain your programming skills!
 CompSys have gotten a reputation of being both a hard and informative course. As you can see below (and the course description), we will cover a lot of different topics that conceptually are very different, in a short time. It is therefore important that you are ready for the course when we start in September, avoiding to fall behind during the first weeks.
 
-We do not ask you to read ahead in the material. However, most of you are still inexperienced programmers and CompSys in very heavy on programming and program understanding. You need to think of programming as a _craft_, like playing an instrument. You have during the first year learned the basics of how it works. But if you lay it away over the summer (do not program for two months) you will lose much of these skills that you have gain over the first year.
+We do not ask you to read ahead in the material. Also do not start to learn C, which we will use in CompSys. However, most of you are still inexperienced programmers and CompSys in very heavy on programming and program understanding. You need to think of programming as a _craft_, like playing an instrument. You have during the first year learned the basics of how it works. But if you lay it away over the summer (do not program for two months) you will lose much of these skills that you have gain over the first year. 
 
-<!-- We have therefore posted some [preparation exercises and reading](preparations/README.md) you can do over the summer. -->
+This July and August we will have [DIKU Summer of Programming](https://github.com/diku-summer-programming/fun), what you can use to get inspiration, help and support for your ideas.
 
 <!-- It is also important that you have looked into the tools that are needed for the course, so we encourage you to look at the [Tools page](tools/README.md).
  -->
