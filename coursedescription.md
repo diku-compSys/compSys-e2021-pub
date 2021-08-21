@@ -136,22 +136,21 @@ The second year study ambassadors will can help you find a find a groups, if you
 The study ambassadors are:
 * 
 
-## Assignment (The following might change slightly...)
+## Assignment (The following can change slightly...)
 
-There are 8 assignment in total during the course with deadline roughly every second week with the following deadlines.
+There are 7-8 assignment in total during the course with deadline roughly every second week with the following deadlines.
 
-<!-- 
+
 |                                   | Expected deadline   |
 | --------------------------------- | ------------------- |
-| A0: ?  | 06 Sep @ 16:00      |
-| A1: ?             | 20 Sep @ 16:00      |
-| A2: ?      | 04 Oct @ 16:00      |
-| A3: ?             | 25 Oct @ 16:00      |
-| A4: ?                     | 08 Nov @ 16:00      |
-| A5: ?        | 29 Nov @ 16:00      |
-| A6: ?       | 13 Dec @ 16:00      |
-| A7: ?       | 10 Jan @ 16:00      |
- -->
+| A0: File(0) - Data encoding       | 19 Sep @ 16:00      |
+| A1: Dynamic memory and caching    | 01 Oct @ 16:00      |
+| A2: Concurrency                   | 31 Oct @ 16:00      |
+| A3: File network distribution     | 21 Nov @ 16:00      |
+| A4: P2P networking and security   | 05 Dec @ 16:00      |
+| A5: Simple architecture.          | 19 Dec @ 16:00      |
+| A6: Pipelined architecture        | 08 Jan @ 16:00      |
+
  The assignments will be graded with points from 0 to 4 and it is not possible to re-hand-in any of the assignments.
 
 Assignments are made to be solved in groups of preferably three students, but groups of two active students will also do. We strongly encourage not to work alone. Groups cannot be larger than three students. Each group must make their own solutions and must share implementations and report with other. You are allowed to discuss material and ideas.
@@ -183,11 +182,11 @@ Furthermore, we will require that you show a reasonable understanding of all par
 
 Mapping of topics to assignments:
 
-|                      | A0 | A1 | A2 | A3 | A4 | A5 | A6 | A7 |
-| ---------------------|----|----|----|----|----|----|----|----|
-| Computer network     |    |    |  X |  X |    |    |    |    |
-| Machine architecture |    |    |    |    |    |    |  X |  X |
-| Operating System     |    |    |    |    |  X |  X |    |    |
+|                      | A0 | A1 | A2 | A3 | A4 | A5 | A6 |
+| ---------------------|----|----|----|----|----|----|----|
+| Computer network     |    |    |    |  X |  X |    |    |
+| Machine architecture |    |    |    |    |    |  X |  X |
+| Operating System     |    |  X |  X |    |    |    |    |
 
 The rule about 40 % of points for assignments in each topic, is included to make sure that you will uphold the learning goals for the course. We will teach you about many different abstractions and you should learn something about all of them. Without this rule you could attend the exam without e.g. learning anything about computer networks by getting enough points in the beginning of the course. The 40 % is chosen as it should be "easier" than the general rule of 50 %; it will therefore be set to 3 of the possible 8 points.
 
