@@ -39,12 +39,12 @@ BOH and KR will be available at Academic Books at Biocenteret (http://www.academ
 The general outline of CompSys will be the following:
 
  * Week 36-37: Introduction to the abstract computing machine, C programming and data representation
- * Week 38-40: Computer networks and security - application and transport layer
- * Week 41: Memory hierarchy and caching
+ * Week 38: Memory hierarchy and caching
+ * Week 39-41: Operating systems
  * Week 42: Fall break
- * Week 43-45: Operating systems
+ * Week 43-45: Computer networks - application and transport layer
  * Week 46: No activities (reexam week)
- * Week 47-48: Operating systems cont.
+ * Week 47: Computer networks - security and efficiency
  * Week 48-51: Machine architecture and assembler programming
  * Week 52: Christmas vacation
  * Week 1-2: Computer networks and security - network and link layer
