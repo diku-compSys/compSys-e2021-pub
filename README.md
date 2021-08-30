@@ -5,6 +5,6 @@ In this repository, you can find most of the relevant information on Computer Sy
 Most important are the 
 
   * [Course Description](https://github.com/diku-compSys/compSys-e2021-pub/blob/main/coursedescription.md), and
-  * Lecture plan (comming)
+  * [Lecture plan](lectureplan.md)
 
 This will be updated continuesly.
