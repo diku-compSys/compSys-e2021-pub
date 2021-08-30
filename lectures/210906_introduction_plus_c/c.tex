@@ -1,0 +1,559 @@
+% \documentclass[handout]{beamer}
+\documentclass{beamer}
+
+\usepackage[danish]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage[T1]{fontenc}
+
+\mode<article> % only for the article version
+{
+  \usepackage{fullpage}
+  \usepackage{hyperref}
+}
+
+
+\setbeamertemplate{itemize item}{\raisebox{0.8mm}{\rule{1.2mm}{1.2mm}}}
+\usenavigationsymbolstemplate{} % no navigation buttons
+
+\usepackage{tabularx}
+
+% \usepackage{pstricks,pst-node,pst-text,pst-3d}
+\usepackage{bm,latexsym,url,shadow,color}
+\usepackage{graphicx}
+
+% \usepackage{theorem}
+%\include{reniers}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+\usepackage{listings}
+\usepackage{color}
+\lstset{language=C,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{olive}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\title{Computer Systems, B1-2 2020\\~\\Introduction to C}
+
+\author{Troels Henriksen\\Based on slides by Michael Kirkedal Thomsen}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+\end{frame}
+
+
+\begin{frame}{Outline}
+\begin{itemize}
+\item Syntax - Statements/Expressions/Values
+\item \texttt{main}
+\item Arrays
+\item Reading and writing to/from STDIO
+\end{itemize}
+\pause
+
+\begin{block}{Programming is a craft}
+  I will do live coding--feel free to ask questions and make comments.
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Recommended compiler flags }
+
+\begin{block}{Compiler call}
+\texttt{gcc -Wall -Wextra -pedantic -std=c11 -c [file] }
+\end{block}
+
+\begin{description}
+\item[-Wall] Turns on (almost) all warnings
+\item[-Wextra] Add warnings for unassigned values and more
+\item[-pedantic] Makes warnings if you goes outside ISO C
+\item[-std=c11] Chooses the latest C standard
+\end{description}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Makefile}
+Tool that makes it easy to build your program.
+
+\begin{block}{}
+\begin{lstlisting}
+CC=gcc
+CFLAGS=-std=c11 -Wall -Werror -Wextra -pedantic
+
+.PHONY: clean all
+
+cmd: updatedfile(s).c
+  $(CC) $(CFLAGS) -o $@ -c $<
+\end{lstlisting}
+\end{block}
+
+This will be detailed more over time.
+
+\end{frame}
+
+\begin{frame}[fragile]{C Style Guide -- Code is made to be read}
+\begin{itemize}
+Always use curly braces. The opening brace should be on the same line as the declaration.
+\begin{lstlisting}
+int f() {
+  for (int i = 0; i < 100; i++) {
+    if (i % 2 == 0) {
+      // Do something.
+    }
+  }
+  // Return something.
+}
+\end{lstlisting}
+
+\item Use 2 spaces for indentation. Indent so as to make the structure of your code clear.
+
+\item All functions must return a value. Returning void is not allowed.
+
+\item Code must be warning-free.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{The \lstinline{main} function}
+\begin{itemize}
+\item Simple main
+\end{itemize}
+\begin{lstlisting}[frame=single]
+int main() {
+  ...
+}
+
+\end{lstlisting}
+
+\begin{itemize}
+\item Main with arguments
+\end{itemize}
+\begin{lstlisting}[frame=single]
+int main(int argc, char* argv[]) {
+  ...
+}
+
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{Back to reality - Return from \texttt{main} function}
+\begin{lstlisting}[frame=single]
+int main(int argc, char* argv[]) {
+  ...
+  return ???;
+}
+\end{lstlisting}
+\pause
+\begin{itemize}
+\item Use the \lstinline{exit} function with returning from \lstinline{main} function
+\item Lookup the codes that you need (use \texttt{echo \$?} to show result.)
+\item If nothing: \lstinline{return EXIT_SUCCESS;} is assumed
+\end{itemize}
+
+\begin{lstlisting}[frame=single]
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+  ...
+  return EXIT_SUCCESS;
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Statements: conditional}
+\begin{lstlisting}[frame=single]
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+  if (argc == 2) { // 1 argument
+    return EXIT_SUCCESS;
+  } else if (argc == 4) { // 3 arguments
+    return EXIT_SUCCESS;
+  } else {
+    return EXIT_FAILURE;
+  }
+}
+\end{lstlisting}
+\begin{itemize}
+\item This is actually a statement with a nested statement
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Statements: switch-case}
+\begin{lstlisting}[frame=single]
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+  switch (argc) {
+    case 2:
+      return EXIT_SUCCESS;
+      break;
+    case 4:
+      return EXIT_SUCCESS;
+      break;
+    default:
+      return EXIT_FAILURE;
+      break;
+  }
+}
+\end{lstlisting}
+\begin{itemize}
+\item
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Statements: switch-case alternative}
+\begin{lstlisting}[frame=single]
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+  switch (argc) {
+    case 2:
+    case 4:
+      return EXIT_SUCCESS;
+      break;
+    default:
+      return EXIT_FAILURE;
+      break;
+  }
+}
+\end{lstlisting}
+\begin{itemize}
+\item Cases only works on constant values (not expressions like conditionals).
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Statements: while-loop}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  int i = 1;
+  while (i < argc) {
+    printf("Argument number %d: %s\n",
+           i, argv[i]);
+    i = i + 1;
+  }
+}
+\end{lstlisting}
+\begin{itemize}
+\item Use any expression
+\item Easy to make it diverge
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Statements: for-loop}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  for (int i = 1; i < argc; i++) {
+    printf("Argument number %d: %s\n",
+           i, argv[i]);
+  }
+}
+\end{lstlisting}
+\begin{itemize}
+\item Good for iteration
+\item Keep it simple
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Assignments}
+\begin{lstlisting}[frame=single]
+int main(int argc, char* argv[]) {
+  int a = 1;
+  int b = 2 + a;
+  a += b; // a = a + b
+  a *= 2;
+  a++; // a = a + 1
+  a--;
+  ++a; // a = a + 1
+}
+\end{lstlisting}
+\begin{itemize}
+\item Useful short-hand writing styles.
+\item Easy to understand when writing simple programs
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Watch your side}
+What is the values of a, b, and c?
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  int a = 3;
+  int b = 5;
+  int c = a++ + ++b;
+  printf("a = %d\n", a);
+  printf("b = %d\n", b);
+  printf("c = %d\n", c);
+}\end{lstlisting}
+\pause
+\begin{itemize}
+\item Informally, \lstinline{++a} first increments \lstinline{a}, then returns its value
+\item Informally, \lstinline{b++} first returns the value of \lstinline{b}, then increments
+\item Be very careful of side-effects
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Watch you side -- lets try again}
+What is the values of a, b, and c?
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  int a = 3;
+  int b = 5;
+  int c = -2;
+  a += (c = a++ - (b += --c)) + ++b;
+  printf("a = %d\n", a);
+  printf("b = %d\n", b);
+  printf("c = %d\n", c);
+}
+\end{lstlisting}
+\pause
+\begin{itemize}
+\item Assignments are expressions with side-effects that return the
+  value that is assigned to a variable.
+\item \textbf{Order of evaluation in expression is unspecified.}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Arrays}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  int a[16];
+  a[0] = 1;
+  for (int i = 1; i < 16; i++) {
+    a[i] = a[i-1] + 1;
+  }
+  printf("final = %d\n", a[15]);
+}
+\end{lstlisting}
+\begin{itemize}
+\item No check for out-of-bounds
+\item Arrays cannot be assigned to
+\item Arrays cannot be compared
+\item Do it element wise
+\end{itemize}
+\end{frame}
+
+
+% \begin{frame}[fragile]{Structs}
+% \begin{lstlisting}[frame=single]
+
+% #include <stdio.h>
+
+% struct point {
+%   int x;
+%   int y;
+% };
+
+% struct point add(struct point p, struct point q) {
+%   struct point w = { .x = p.x + q.x
+%                    , .y = p.y + q.y};
+%   return w;
+% }
+% ...
+% \end{lstlisting}
+% \begin{itemize}
+% \item Create aggregate data types
+% \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}[fragile]{Structs}
+% \begin{lstlisting}[frame=single]
+
+% #include <stdio.h>
+
+% struct point {
+%   int x;
+%   int y;
+% };
+
+% struct point add(struct point p, struct point q) {
+%   struct point w = { .x = p.x + q.x
+%                    , .y = p.y + q.y};
+%   return w;
+% }
+% ...
+% \end{lstlisting}
+% \begin{itemize}
+% \item Create aggregate data types
+% \end{itemize}
+% \end{frame}
+
+
+
+\begin{frame}[fragile]{Writing to stdout}
+\begin{lstlisting}[frame=single]
+int result = fprint("Show %s of value %d ", ... );
+\end{lstlisting}
+
+\begin{tabular}{rl}
+c &Character \\
+d or i & Signed decimal integer \\
+e & Scientific notation (mantissa/exponent) using e character \\
+E & Scientific notation (mantissa/exponent) using E character \\
+f & Decimal floating point \\
+g & Uses the shorter of \%e or \%f \\
+G & Uses the shorter of \%E or \%f \\
+o & Signed octal \\
+s & String of characters \\
+u & Unsigned decimal integer \\
+x & Unsigned hexadecimal integer \\
+X & Unsigned hexadecimal integer (capital letters) \\
+p & Pointer address \\
+n & Nothing printed \\
+\% & Character \\
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}[fragile]{Reading from stdin}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  char input[20];
+  printf ("Give me a string\n");
+  scanf("%s", input);
+  printf ("You wrote: %s\n", input);
+}
+\end{lstlisting}
+\begin{itemize}
+\item Reading value from stdin
+\pause
+\item Problem with writing outside buffer
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Reading a string}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  char input[20];
+  printf ("Give me a string\n");
+  fgets(input, sizeof(input), stdin);
+  printf ("You wrote: %s\n", input);
+}
+\end{lstlisting}
+\begin{itemize}
+\item Use \lstinline{fgets}
+\item Can limit the number of values read
+\item Made for reading from files
+\item stdin is just a file (somewhere)
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Reading values}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  int input;
+  printf ("Give me a integer\n");
+  scanf("%d", input);
+  printf ("You wrote: %d\n", input);
+}
+\end{lstlisting}
+\begin{itemize}
+\item Reading value from stdin
+\pause
+\item Does not work
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Reading values -- correct}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+  int input;
+  printf ("Give me a integer\n");
+  scanf("%d", &input);
+  printf ("You wrote: %d\n", input);
+}
+\end{lstlisting}
+\begin{itemize}
+\item Reading value from stdin
+\pause
+\item Does not work
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Getting values from arguments}
+\begin{lstlisting}[frame=single]
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+  int input;
+  if(argc == 2) {
+    int res = sscanf(argv[1],"%d", &input);
+    if (res == 0) {
+      printf("Bad value\n");
+    } else {
+      printf("Input was: %d\n", input);
+    }
+  }
+}
+
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{You now know enough to get in troube}
+
+\begin{center}
+\alert{\huge{Questions?}}
+
+\vspace{1cm}
+
+
+\end{center}
+
+\end{frame}
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
