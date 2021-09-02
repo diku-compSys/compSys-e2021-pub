@@ -130,11 +130,9 @@ https://nexs.ku.dk/kontakt/findvej/kort_norre-campus/
   * 
 
 
-## Study ambassadors
-The second year study ambassadors will can help you find a find a groups, if you are missing one. They can also be the link to the study administration; if there is something you are in doubt about and feel better to ask a fellow student, they are available. One of them will always be available at the Friday cafées.
+## Study group formation
+The CompSys instructors can help you find a find a study group, if you are missing one. They can also be the link to the study administration; if there is something you are in doubt about and feel better to ask a fellow student, they are available. One of them will always be available at the Friday cafées.
 
-The study ambassadors are:
-* 
 
 ## Assignment (The following can change slightly...)
 
