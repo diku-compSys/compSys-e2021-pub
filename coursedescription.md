@@ -77,7 +77,13 @@ Teachers:
 
 TAs:
 
- *
+ * Henriette Hansen
+ * Jens Kanstrup Larsen
+ * Joachim Fiil Larsen
+ * Jonas Reholt
+ * Jóhann Utne
+ * Lars Peter Jeppesen
+ * Magnus Joensen
 
 ## Lectures
 
@@ -102,13 +108,27 @@ Week 45, No teaching Wednesday, but Friday 13:15 - 15:00
 
 ### Exercise classes
 
-* Hold 1: 
-* Hold 2: 
-* Hold 3: 
-* Hold 4: 
-* Hold 5: 
-* Hold 6: 
-* Hold 7: 
+Monday:
+
+ * Class 1: Henriette
+   * NBB 01.1.H.142
+ * Class 2: Jens
+   * NBB 01.1.I.156
+ * Class 3: Jonas
+   * NBB 01.2.H.142
+ * Class 4: Jóhann
+   * NBB 01.2.I.158
+ * Class 5: Lars
+   * NBB 01.3.H.142
+
+ * Class 6: Joachim
+   * Online
+ * Class 7: Magnus
+   * Online 
+
+Wednesday
+ * Announced soon...
+
 
 ### Room details
 Map of Nørre Campus:
@@ -127,7 +147,18 @@ https://nexs.ku.dk/kontakt/findvej/kort_norre-campus/
    * TA organised café classes for help with assignments and exercises.
 
 ### Rooms
-  * 
+Wednesday: 
+ * NBB 01.1.H.142
+ * NBB 01.1.I.156
+ * NBB 01.2.H.142
+ * NBB 01.2.I.158
+
+Friday:
+ * A104
+ * A110 
+ * A111
+ * C103 (only if others are full)
+
 
 
 ## Study group formation
