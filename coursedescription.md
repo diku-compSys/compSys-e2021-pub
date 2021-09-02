@@ -131,7 +131,8 @@ https://nexs.ku.dk/kontakt/findvej/kort_norre-campus/
 
 
 ## Study group formation
-The CompSys instructors can help you find a find a study group, if you are missing one. They can also be the link to the study administration; if there is something you are in doubt about and feel better to ask a fellow student, they are available. One of them will always be available at the Friday cafées.
+The CompSys instructors can help you find a find a study group, if you are missing one. A study group formation will be held on 8/9 at 12.00. Watch absalon for an announcement with details on the process. 
+The instructors can also be the link to the study administration; if there is something you are in doubt about and feel better to ask a fellow student, they are available.
 
 
 ## Assignment (The following can change slightly...)
