@@ -1,6 +1,6 @@
 # Exercises
 
-These exercises are intended to give your a first quick feeling of C
+These exercises are intended to give you a first quick feeling of C
 and prepare you for what comes in A0. Use the exercise classes to get
 help.  This is not part of the assignment.
 
@@ -48,10 +48,10 @@ should print "`Wrong number of arguments`".
 
 ## Input argument validation
 
-Write a C program that `noAs` that given a string as argument, does
-either of the following.
+Write a C program `noAs` that given a string as argument, does either
+of the following.
 
-  * If the first character of the string is an the `char` `A` it
+  * If the first character of the string is the `char` `A` it
     prints "`No beginning A's are allowed`",
 
   * otherwise it prints the given string.
