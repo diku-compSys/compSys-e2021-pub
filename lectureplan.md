@@ -1,4 +1,4 @@
-# Suggested Lecture plan for Top-down Computer Systems
+# Lecture plan for Computer Systems
 
 | Week | Date   | Topic | Lecture  | Topic                                                                         | Material |
 | ---- | ----   | ----- | -------  | ------                                                                        | -------- |

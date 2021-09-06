@@ -73,18 +73,24 @@ Teachers:
  * Michael Kirkedal Thomsen (course organiser)
  * Finn Schirmer Andersen
  * Troels Henriksen
- * Kenneth Skovhede
+ * David Marchant
 
 TAs:
 
- *
+ * Henriette Hansen
+ * Jens Kanstrup Larsen
+ * Joachim Fiil Larsen
+ * Jonas Reholt
+ * Jóhann Utne
+ * Lars Peter Jeppesen
+ * Magnus Joensen
 
 ## Lectures
 
  * Mondays at 13:15-15:00
  * Wednesdays at 10:15-12:00
 
-<!-- All lectures will be online. The exact format can vary. -->
+All lectures will are in HCØ Aud 3.
 
 ## Exercise Classes
 Exercises will mainly be with physical help, but we expect also to schedule an option for online help.
@@ -94,7 +100,7 @@ Exercises will mainly be with physical help, but we expect also to schedule an o
  * Wednesdays 13:15-15:00
    * These classes are dedicated to exercises and not making assignments.
 
-Week 45, No teaching Wednesday, but Friday 13:15 - 15:00
+Week 45, expect no teaching Wednesday, but Friday 13:15 - 15:00 (yet to be organised)
 
 <!-- See [skema.ku.dk](https://skema.ku.dk/tt/tt.asp?SDB=KU2021&language=DK&folder=Reporting&style=textspreadsheet&type=module&idtype=id&id=95292&weeks=1-27&days=1-5&periods=1-68&width=0&height=0&template=SWSCUST2+module+textspreadsheet) for room details.
  -->
@@ -102,13 +108,27 @@ Week 45, No teaching Wednesday, but Friday 13:15 - 15:00
 
 ### Exercise classes
 
-* Hold 1: 
-* Hold 2: 
-* Hold 3: 
-* Hold 4: 
-* Hold 5: 
-* Hold 6: 
-* Hold 7: 
+Monday:
+
+ * Class 1: Henriette
+   * NBB 01.1.H.142
+ * Class 2: Jens
+   * NBB 01.1.I.156
+ * Class 3: Jonas
+   * NBB 01.2.H.142
+ * Class 4: Jóhann
+   * NBB 01.2.I.158
+ * Class 5: Lars
+   * NBB 01.3.H.142
+
+ * Class 6: Joachim
+   * Online
+ * Class 7: Magnus
+   * Online 
+
+Wednesday
+ * Announced soon...
+
 
 ### Room details
 Map of Nørre Campus:
@@ -127,7 +147,18 @@ https://nexs.ku.dk/kontakt/findvej/kort_norre-campus/
    * TA organised café classes for help with assignments and exercises.
 
 ### Rooms
-  * 
+Wednesday: 
+ * NBB 01.1.H.142
+ * NBB 01.1.I.156
+ * NBB 01.2.H.142
+ * NBB 01.2.I.158
+
+Friday:
+ * A104
+ * A110 
+ * A111
+ * C103 (only if others are full)
+
 
 
 ## Study group formation
