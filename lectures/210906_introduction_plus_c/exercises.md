@@ -63,7 +63,7 @@ learn it from the beginning. _Always sanitise your input._
 
 ## Multiple input formats
 
-Modify the `dice` program developed at lecture to support `dN` as
+Modify the `roll` program developed at lecture to support `dN` as
 alternative notation for `1dN`.  Hint: if one `sscanf()` fails, try
 another.
 
