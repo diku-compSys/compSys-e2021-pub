@@ -111,23 +111,26 @@ Week 45, expect no teaching Wednesday, but Friday 13:15 - 15:00 (yet to be organ
 Monday:
 
  * Class 1: Henriette
-   * NBB 01.1.H.142
+   * Monday: NBB 01.1.H.142
+   * Wednesday: DIKU 1-0-04
  * Class 2: Jens
-   * NBB 01.1.I.156
+   * Monday: NBB 01.1.I.156
+   * Wednesday: DIKU 1-0-10
  * Class 3: Jonas
-   * NBB 01.2.H.142
+   * Monday: NBB 01.2.H.142
+   * Wednesday: DIKU 1-0-22
  * Class 4: Jóhann
-   * NBB 01.2.I.158
+   * Monday: NBB 01.2.I.158
+   * Wednesday: DIKU 1-0-26
  * Class 5: Lars
-   * NBB 01.3.H.142
-
+   * Monday: NBB 01.3.H.142
+   * Wednesday: DIKU 1-0-30
  * Class 6: Joachim
-   * Online
+   * Monday: NBB 01.3.I.164
+   * Wednesday: DIKU 1-0-37
+
  * Class 7: Magnus
    * Online 
-
-Wednesday
- * Announced soon...
 
 
 ### Room details
