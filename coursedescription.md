@@ -108,8 +108,6 @@ Week 45, expect no teaching Wednesday, but Friday 13:15 - 15:00 (yet to be organ
 
 ### Exercise classes
 
-Monday:
-
  * Class 1: Henriette
    * Monday: NBB 01.1.H.142
    * Wednesday: DIKU 1-0-04
