@@ -7,6 +7,10 @@ Play with integer representation. Try to get `0xA` correct on the different "lev
 
 http://topps.diku.dk/compsys/integers.html
 
+## Integer puzzles
+
+Consider the integer puzzles from the last slide in the presentation.
+
 ## File check
 
 Write a C program `fileexist` that given a filename checks if it can
