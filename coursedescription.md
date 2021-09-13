@@ -146,6 +146,7 @@ https://nexs.ku.dk/kontakt/findvej/kort_norre-campus/
    * This sessions have a café structure and are dedicated to help with assignments and other open questions.
  * Fridays 13:15-15:00
    * TA organised café classes for help with assignments and exercises.
+   * Friday Sep 24 it will be 14:15-16:00
 
 ### Rooms
 Wednesday: 
