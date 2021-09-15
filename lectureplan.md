@@ -6,7 +6,7 @@
 |      |        | Cprog | Troels   | Introduction to C programming                                                 | JG 1-3   |
 |      | 08 Sep | Cprog | Troels   | Bits, Bytes & Words + C programming - files and error handling                | BOH 2.1-2.2, JG 4-7 |
 | 37   | 13 Sep | Cprog | Michael  | Arithmetic                                                                    | BOH 2.3-2.4                                                                                                                                                        |
-|      | 15 Sep | Arc   | Troels   | C Programming - pointers and memory + Computer model                          | JG 8-9                                                                                                                                                             |
+|      | 15 Sep | Arc   | Troels   | C Programming - pointers and memory + Computer model                          | JG 8-9, 11                                                                                                                                                         |
 |      |        |       |          | Hand-in A0 -- File(0) - Data encoding                                         |          |
 | 38   | 20 Sep | Cprog | Troels   | Dynamic memory                                                                | JG 12-13
 |      | 22 Sep | Arc   | Troels   | Introduction to performance and the memory hierarchy                          | BOH 5.1-5.2 + 6.1-6.3                                                                                                                                              |
