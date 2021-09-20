@@ -58,11 +58,14 @@ int main() {
   double x;
   int c;
   struct stack *stack = stack_new();
-  while (1) {
+  int running = 1;
+
+  while (running) {
     c=getc(stdin);
     switch (c) {
     case EOF:
-      exit(EXIT_SUCCESS);
+      running = 0;
+      break;
     case '+':
       perform_binop(stack, &plus);
       break;
@@ -98,6 +101,10 @@ int main() {
         printf("Bad input.\n");
       }
     }
-    while (getc(stdin)!='\n');
+
+    // Skip to next line;
+    while (c != '\n' && c != EOF) {
+      c = getc(stdin);
+    }
   }
 }
