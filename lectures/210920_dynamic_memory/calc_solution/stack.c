@@ -22,28 +22,17 @@ void stack_free(struct stack* stack) {
 }
 
 int stack_empty(struct stack *stack) {
-  if (stack == NULL) {
-    fprintf(stderr, "stack_empty() error: stack uninitialized\n");
-    exit(1);
-  }
-
+  assert(stack != NULL);
   return stack->top == NULL;
 }
 
 void *stack_top(struct stack *stack) {
-  if (stack == NULL) {
-    fprintf(stderr, "stackop() error: stack uninitialized\n");
-    exit(1);
-  }
-
+  assert(stack != NULL);
   return stack->top->data;
 }
 
 void *stack_pop(struct stack *stack) {
-  if (stack == NULL) {
-    fprintf(stderr, "stack_pop() error: stack uninitialized\n");
-    exit(1);
-  }
+  assert(stack != NULL);
 
   struct node *old_top = stack->top;
 
@@ -60,10 +49,7 @@ void *stack_pop(struct stack *stack) {
 }
 
 int stack_push(struct stack *stack, void *data) {
-  if (stack == NULL) {
-    fprintf(stderr, "stack_push() error: stack uninitialized\n");
-    exit(1);
-  }
+  assert(stack != NULL);
 
   struct node *new_top = malloc(sizeof(struct node));
 
