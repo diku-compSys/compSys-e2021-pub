@@ -2,7 +2,11 @@
 #include <assert.h>
 #include "stack.h"
 
-void stack_init(struct stack* stack) {
+struct stack* stack_new() {
+  assert(0);
+}
+
+void stack_free(struct stack* stack) {
   assert(0);
 }
 

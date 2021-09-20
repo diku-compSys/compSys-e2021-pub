@@ -2,9 +2,23 @@
 #include <stdio.h>
 #include "stack.h"
 
+struct node {
+  void        *data;
+  struct node *next;
+};
 
-void stack_init(struct stack *stack) {
+struct stack {
+  struct node *top;
+};
+
+struct stack* stack_new() {
+  struct stack* stack = malloc(sizeof(struct stack));
   stack->top = NULL;
+  return stack;
+}
+
+void stack_free(struct stack* stack) {
+  free(stack);
 }
 
 int stack_empty(struct stack *stack) {
