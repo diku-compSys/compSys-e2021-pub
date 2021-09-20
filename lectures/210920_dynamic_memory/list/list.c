@@ -11,7 +11,7 @@ struct list {
 };
 
 struct list* list_create() {
-  struct list *list = malloc(sizeof(list));
+  struct list *list = malloc(sizeof(struct list));
   list->head = NULL;
   return list;
 }
