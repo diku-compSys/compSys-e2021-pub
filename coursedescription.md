@@ -176,7 +176,7 @@ There are 7-8 assignment in total during the course with deadline roughly every 
 |                                   | Expected deadline   |
 | --------------------------------- | ------------------- |
 | A0: File(0) - Data encoding       | 19 Sep @ 16:00      |
-| A1: Dynamic memory and caching    | 03 Oct @ 16:00      |
+| A1: Dynamic memory and caching    | 10 Oct @ 16:00      |
 | A2: Concurrency                   | 31 Oct @ 16:00      |
 | A3: File network distribution     | 21 Nov @ 16:00      |
 | A4: P2P networking and security   | 05 Dec @ 16:00      |
