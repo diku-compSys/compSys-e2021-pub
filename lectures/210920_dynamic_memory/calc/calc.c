@@ -108,7 +108,9 @@ int main() {
     }
   }
 
-  while (!stack_empty(stack))
+  while (!stack_empty(stack)) {
     free(stack_pop(stack));
+  }
+
   stack_free(stack);
 }

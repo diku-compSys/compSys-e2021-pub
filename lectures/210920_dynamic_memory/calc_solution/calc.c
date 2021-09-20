@@ -32,7 +32,7 @@ static void perform_binop(struct stack *stack, binop op) {
         out_of_memory();
       }
     }
-    free(x);
+    // Do not free `x` here, because it's just been pushed back unto the stack
   }
   free(z);
   printf("Too few elements on stack.\n");
@@ -107,4 +107,10 @@ int main() {
       c = getc(stdin);
     }
   }
+
+  while (!stack_empty(stack)) {
+    free(stack_pop(stack));
+  }
+
+  stack_free(stack);
 }
