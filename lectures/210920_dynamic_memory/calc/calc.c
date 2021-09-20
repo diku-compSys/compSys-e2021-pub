@@ -57,30 +57,29 @@ static double divn(double x, double y) {
 int main() {
   double x;
   int c;
-  struct stack stack;
-  stack_init(&stack);
+  struct stack *stack = stack_new();
   while (1) {
     c=getc(stdin);
     switch (c) {
     case EOF:
       exit(EXIT_SUCCESS);
     case '+':
-      perform_binop(&stack, &plus);
+      perform_binop(stack, &plus);
       break;
     case '-':
-      perform_binop(&stack, &sub);
+      perform_binop(stack, &sub);
       break;
     case '*':
-      perform_binop(&stack, &mult);
+      perform_binop(stack, &mult);
       break;
     case '/':
-      perform_binop(&stack, &divn);
+      perform_binop(stack, &divn);
       break;
     case 'p':
-      if (stack_empty(&stack)) {
+      if (stack_empty(stack)) {
         printf("Stack is empty.\n");
       } else {
-        printf("%lf\n", *(double*)stack_top(&stack));
+        printf("%lf\n", *(double*)stack_top(stack));
       }
       break;
     default:
@@ -91,7 +90,7 @@ int main() {
           out_of_memory();
         } else {
           *d = x;
-          if (stack_push(&stack,d) != 0) {
+          if (stack_push(stack,d) != 0) {
             out_of_memory();
           }
         }

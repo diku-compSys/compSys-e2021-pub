@@ -1,10 +1,11 @@
 #ifndef STACK_H
 #define STACK_H
 
-struct stack {
-} stack;
+struct stack;
 
-void stack_init(struct stack*);
+struct stack* stack_new();
+
+void stack_free(struct stack*);
 
 int stack_empty(struct stack*);
 
