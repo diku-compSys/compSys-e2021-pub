@@ -1,0 +1,482 @@
+\documentclass[rgb,dvipsnames,aspectratio=169,xcolor=table]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{listings}
+
+% Beamer theme settings favored by Troels for this course.  Designed
+% to maximise useful space on slides.
+
+\definecolor{main}{HTML}{000000}
+\definecolor{fade}{HTML}{cccccc}
+\setbeamercolor{structure}{fg=main}
+\setbeamercolor{titlelike}{fg=white,bg=main}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{itemize item}{\raisebox{0.8mm}{\rule{1.2mm}{1.2mm}}}
+\setbeamercolor{block body}{bg=fade}
+\setbeamercolor{block title}{fg=white,bg=main}
+\usenavigationsymbolstemplate{} % no navigation buttons
+
+\title{Performance and Languages}
+\author{Troels Henriksen}
+\date{22nd of September, 2021}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{What is performance?}
+
+\pause
+
+  \begin{itemize}
+  \item How \textbf{fast} you solve a problem.
+  \item How \textbf{few resources} you use to solve a problem.
+  \end{itemize}
+
+  \pause\bigskip
+
+  \begin{description}
+  \item[\textbf{Important:}] the program must still be correct---it's easy to
+  make a very fast program if it doesn't have to produce the right
+  result.
+  \end{description}
+
+  \pause\bigskip
+
+  \begin{center}
+    \textbf{There's more to performance than asymptotic complexity!}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Constant factors matter}
+
+  \begin{itemize}
+  \item Easily see 10:1 performance range depending on how code is written
+  \item Must optimize at multiple levels:
+    \begin{itemize}
+    \item algorithm, data representations, procedures, and loops
+    \end{itemize}
+  \item Must understand system to optimise performance:
+    \begin{itemize}
+    \item How programs are compiled and executed
+    \item How modern processors + memory systems operate
+    \item How to measure program performance and identify bottlenecks
+    \item How to improve performance without destroying code
+      modularity and generality
+    \end{itemize}
+  \end{itemize}
+
+  \pause\bigskip
+
+  \begin{center}
+    \textbf{Let's look at why C is often considered a ``fast
+      language'', and what that means.}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Roughly two kinds of languages}
+
+  \begin{description}
+  \item[Compiled languages] are transformed to machine code before execution (e.g. C)
+  \item[Interpreted languages] are run directly by a software
+    \textit{interpreter} (e.g. Python)
+  \end{description}
+
+  \pause
+
+  \begin{block}{Pedantic disclaimer}
+    Compilation/interpretation is strictly a property of
+    \textit{implementations}, not \textit{languages}.
+  \end{block}
+
+  \begin{itemize}
+  \item You could have a C interpreter or Python compiler
+  \item But most (not all!) languages are built with a specific
+    implementation technique in mind
+  \item A few languages (Lisp, JavaScript) have lots of \textit{very}
+    different implementations
+  \end{itemize}
+
+  \pause\bigskip
+
+  \begin{center}
+  \textbf{We teach you the big picture---the details are always more
+    complicated in practice!}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Tradeoffs}
+
+  \begin{itemize}
+  \item Compiled languages
+    \begin{itemize}
+    \item[+] Almost always faster
+    \item[-] Require compilation after every change
+    \item[-] Usually cannot run program fragments in isolation
+    \item[-] Tend to have more restrictions (e.g. static typing)
+    \item[-] Much more difficult to implement
+    \end{itemize}\pause
+  \item Interpreted languages
+    \begin{itemize}
+    \item[-] Usually slow
+    \item[+] Can run immediately
+    \item[+] Can easily run fragments (e.g. single functions) in isolation
+    \item[+] Much easier to implement
+    \end{itemize}
+  \end{itemize}
+
+  \pause\bigskip
+
+  \begin{center}
+    \textbf{Let us look at the scale of the overhead.}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Collatz conjecture}
+
+\[
+  f(n) = \left\{
+    \begin{array}{ll}
+      \frac{n}{2} & \text{if}~n~\text{is even} \\
+      3n+1 & \text{if}~n~\text{is odd}
+    \end{array}
+  \right\}
+\]
+
+\begin{itemize}
+\item \textbf{Conjecture:} if we apply this function to some number
+  greater than $1$, we will eventually reach $1$
+\item To disprove this conjecture, we only need \textit{a single
+    counter-example} that goes into a cycle instead
+\item People write programs to investigate the behaviour of this
+  sequence
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \begin{minipage}[t]{0.45\linewidth}
+\lstinputlisting[
+caption={\texttt{collatz.py}},
+language=Python,
+frame=single,
+basicstyle=\small]
+{code/collatz.py}
+  \end{minipage}
+\hfill
+  \begin{minipage}[t]{0.49\linewidth}
+  \lstinputlisting[
+caption={\texttt{collatz.c}},
+language=C,
+basicstyle=\scriptsize,
+frame=single]
+{code/collatz.c}
+  \end{minipage}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Benchmarking \texttt{collatz.py}}
+
+\begin{verbatim}
+$ time python3 ./collatz.py 100000 >/dev/null
+
+real    0m1.368s
+user    0m1.361s
+sys     0m0.007s
+\end{verbatim}
+
+\pause
+
+\begin{verbatim}
+$ gcc collatz.c -o collatz
+\end{verbatim}
+
+\pause
+
+\begin{verbatim}
+$ time ./collatz 100000 >/dev/null
+
+real    0m0.032s
+user    0m0.030s
+sys     0m0.002s
+\end{verbatim}
+
+\pause
+
+\[
+  \textbf{Speedup:} \quad \frac{1.368}{0.032} = 42.75
+\]
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why are interpreted languages slow?}
+
+  To understand this, we must look at \textbf{how processors execute code.}
+
+  \bigskip
+
+  \begin{columns}
+    \begin{column}{0.2\textwidth}
+  \begin{tabular}{|c|}
+    \textbf{Register file} \\\hline
+    \texttt{rax} \\\hline
+    \texttt{rcx} \\\hline
+    \texttt{rdx} \\\hline
+    \texttt{rbx} \\\hline
+    ...
+  \end{tabular}
+    \end{column}
+    \begin{column}{0.8\textwidth}
+      \begin{itemize}
+      \item The CPU has a fixed set of \textbf{registers}
+      \item Registers act as variables for \textbf{machine code instructions}
+      \item Some registers are \textbf{general purpose}, others are
+        \textbf{special purpose}
+        \begin{itemize}
+        \item Program counter holds address of current instruction
+        \item Condition register holds results of comparisons
+        \item Stack pointer holds address of top of stack
+        \end{itemize}
+      \item Exact registers and instructions depend on the \textbf{architecture}.
+        \begin{itemize}
+        \item We teach you x86-64 (sometimes called AMD64)
+        \item Others are ARM, MIPS, SPARC, POWER...
+        \item On x86-64, most registers hold 64-bit quantities.
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Compiling C to assembly}
+
+\texttt{\$ gcc mul.c -S}
+
+  \begin{minipage}[t]{0.45\linewidth}
+\lstinputlisting[
+caption={\texttt{mul.c}},
+language=C,
+frame=single,
+basicstyle=\small]
+{code/mul.c}
+  \end{minipage}
+\hfill
+  \begin{minipage}[t]{0.49\linewidth}
+  \lstinputlisting[
+caption={\texttt{mul.s} (extract)},
+language=C,
+basicstyle=\scriptsize,
+frame=single,
+firstline=6,
+lastline=12]
+{code/mul.s}
+  \end{minipage}
+
+\textbf{Calling convention:}
+  \begin{itemize}
+  \item The two arguments stored in registers \texttt{rdi} and \texttt{rsi}.
+  \item Return value stored in register \texttt{rax}.
+  \end{itemize}
+
+  \begin{center}
+    \textbf{A modern processor can execute billions of instructions per second.}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Compiling Python to...?}
+
+  The Python interpreter actually does \textit{compile} Python to
+  ``opcodes''.
+
+\begin{verbatim}
+$ python
+>>> def mul(x,y): return x * y
+>>> import dis
+>>> dis.dis(mul)
+  1           0 LOAD_FAST                0 (x)
+              2 LOAD_FAST                1 (y)
+              4 BINARY_MULTIPLY
+              6 RETURN_VALUE
+\end{verbatim}
+
+  This is "assembly code" for a \textbf{virtual machine} that is
+  interpreted by a C program.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Compilation vs interpretation}
+
+  \begin{center}
+    \textbf{All programs are interpreted when run!}
+  \end{center}
+
+  \begin{itemize}
+  \item Machine code programs (e.g. generated by a C compiler) are run
+    by \textbf{an interpreter built in hardware}.
+  \item Python programs are run by \textbf{an interpreter written in
+      software}, which must \emph{itself} be interpreted by something
+    else.
+  \item \textbf{Each level of interpretation adds overhead}, but
+    usually also \emph{convenience}: productivity and correctness!
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Combining interpretation and compilation}
+
+  \begin{itemize}
+  \item Interpreted languages can be fast when
+    \begin{itemize}
+    \item Most of the run-time is spent waiting data from files or network
+    \item They mostly call functions written in faster compiled languages
+    \end{itemize}
+  \item \textbf{Best of both worlds:} flexibility of interpretation,
+    and speed of C
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Different ways to compile}
+
+  \begin{description}
+    \pause
+  \item[To executable program \texttt{collatz}]\hfill\\
+\begin{verbatim}
+$ gcc collatz.c -o collatz
+\end{verbatim}
+    \begin{itemize}
+    \item Can be run directly
+    \end{itemize}
+
+    \pause
+  \item[To object file \texttt{collatz.o}]\hfill\\
+\begin{verbatim}
+$ gcc collatz.c -c -o collatz.o
+\end{verbatim}
+    \begin{itemize}
+    \item Can be \textit{linked} with other object files
+    \item Can be processed further
+    \end{itemize}
+
+\pause
+  \item[To shared object file \texttt{libcollatz.so}]\hfill\\
+\begin{verbatim}
+$ gcc collatz.c -fPIC -shared -o libcollatz.so
+\end{verbatim}
+    \begin{itemize}
+    \item Can be linked \textit{at run-time} by a running program
+    \item How compiled programs support dynamic ``plug-ins''
+    \end{itemize}
+  \end{description}
+
+  \textbf{All output files contain fully compiled machine code.}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Calling C from Python}
+
+  \begin{block}{Compiling C program to shared library}
+\begin{verbatim}
+$ gcc collatz.c -fPIC -shared -o libcollatz.so
+\end{verbatim}
+  \end{block}
+
+\lstinputlisting[
+caption={\texttt{collatz-ffi.py}},
+language=Python,
+frame=single]
+{code/collatz-ffi.py}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{verbatim}
+$ time python3 ./collatz-ffi.py 100000 >/dev/null
+
+real    0m0.165s
+user    0m0.163s
+sys     0m0.003s
+\end{verbatim}
+
+\[
+  \textbf{Speedup:} \quad \frac{1.368}{0.165} = 8.2
+\]
+
+\pause
+
+\begin{itemize}
+\item Slower than pure C by about $5\times$
+\item Faster if we made fewer ``foreign'' calls, but each took more
+  time
+\item Ideal case is single foreign function call that operates on many
+  values
+\item \textbf{This is exactly how NumPy works!}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{NumPy performance}
+
+\begin{lstlisting}[language=Python]
+def f_python(v):
+    for i in range(len(v)):
+        v[i] = v[i]*2 + 3
+
+def f_numpy(v):
+    return v * 2 + 3
+\end{lstlisting}
+
+  \begin{center}
+  \begin{tabular}{rrrr}
+    Size of \texttt{v} & \texttt{f\_python} & \texttt{f\_numpy} & Difference \\\hline
+    $1$ & $0.01ms$ & $0.01ms$ & $0.9\times$ \\
+    $10$ & $0.01ms$ & $0.01ms$ & $1.4\times$ \\
+    $100$ & $0.1ms$ & $0.01ms$ & $13.3\times$ \\
+    $1000$ & $0.98ms$ & $0.01ms$ & $95.3\times$ \\
+    $10000$ & $9.96ms$ & $0.05ms$ & $190.7\times$ \\
+    $100000$ & $98.59ms$ & $0.41ms$ & $240.7\times$ \\
+  \end{tabular}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusions}
+
+  \begin{itemize}
+  \item Compiled languages tend to be fast, but less flexible
+  \item Interpreted languages tend to be slower, but more flexible
+  \item \textbf{Best of both worlds:} write computational primitives
+    in fast languages, call them from slow languages
+    \begin{itemize}
+    \item NumPy works like this
+    \end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

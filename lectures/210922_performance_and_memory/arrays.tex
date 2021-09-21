@@ -1,0 +1,511 @@
+\documentclass[rgb,dvipsnames,aspectratio=169,xcolor=table]{beamer}
+\usetheme{Copenhagen}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\lstset{showstringspaces=false}
+
+
+% Beamer theme settings favored by Troels for this course.  Designed
+% to maximise useful space on slides.
+
+\definecolor{main}{HTML}{000000}
+\definecolor{fade}{HTML}{cccccc}
+\setbeamercolor{structure}{fg=main}
+\setbeamercolor{titlelike}{fg=white,bg=main}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{itemize item}{\raisebox{0.8mm}{\rule{1.2mm}{1.2mm}}}
+\setbeamercolor{block body}{bg=fade}
+\setbeamercolor{block title}{fg=white,bg=main}
+\usenavigationsymbolstemplate{} % no navigation buttons
+
+\title{Array Representation}
+\author{Troels Henriksen}
+\date{22nd of September, 2021}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Arrays}
+
+  \begin{block}{Definition}
+    An array is a multidimensional sequence of objects of the
+    \textit{same type and size}.
+  \end{block}
+
+  \begin{itemize}
+  \item Arrays often used to represent mathematical objects such as
+    \textit{vectors}, \textit{matrices}, and \textit{tensors}.
+  \item Probably the most common data structure for scientific data.
+  \item The arrays we will cover in this lab (and course) are
+    \begin{itemize}
+    \item \textbf{Regular:} all ``rows'' of a multi-dimensional array
+      have the same size.
+    \item \textbf{Homogeneous:} all elements have the same type.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Regular arrays}
+
+  In Python and F\#, we can have lists of lists with irregular shapes:
+
+\begin{lstlisting}[language=Python]
+>>> a = [[1,2,3], [4]]
+>>> len(a)
+2
+>>> len(a[0])
+3
+>>> len(a[1])
+1
+\end{lstlisting}
+
+  \begin{itemize}
+  \item Such structures are \textbf{irregular}, and outside today's
+    topic.
+  \item What we will discuss is more similar to NumPy arrays.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{So what's wrong with C arrays}
+
+  We can declare an $n\times{}m$ array as
+
+\begin{lstlisting}
+double A[n][m];
+\end{lstlisting}
+
+And then we can index it with for example \lstinline{A[1][2]}.  Easy!
+
+\pause
+
+\bigskip
+
+But there are many problems with built-in arrays:
+
+\begin{itemize}
+\item They decay to pointers in many situations.
+\item They cannot be passed to a function without losing their size.
+\item They cannot be returned from a function at all.
+\item \textbf{They are not values!}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Let's build our own arrays}
+
+  \begin{itemize}
+  \item C as a \textit{language} does not have useful dynamic arrays.
+  \item But C does have useful support for \textit{dynamic memory
+      allocation}.
+  \item So let's build our own arrays!
+  \end{itemize}
+
+  \begin{block}{Constructing a dynamic array in C}
+    \begin{itemize}
+    \item Use \texttt{malloc()} or \texttt{calloc()} to obtain a block of
+      memory with room for enough \textit{bytes} to fit the array we
+      need.
+    \item We can view these functions as allocating an ``array of
+      bytes'', which we can then \textit{interpret} as arrays of some
+      other type.
+    \end{itemize}
+  \end{block}
+
+  \pause
+  \bigskip\textbf{Questions:}
+
+  \begin{itemize}
+  \item\textbf{How much memory do we allocate?}  An $x$-element array
+    needs \texttt{$x$*sizeof(t)} bytes, where \texttt{t} is the
+    element type (\texttt{int}, \texttt{double}, etc).\pause
+  \item\textbf{How do we lay out the array in memory?}  That's a more
+    open question...
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile,fragile]
+  \frametitle{The idea}
+
+\begin{lstlisting}
+int* arr = malloc(12); // reserve 12 bytes
+\end{lstlisting}
+
+  \begin{itemize}
+  \item Suppose \texttt{malloc()} returns the address $1000$.
+  \item When we do \texttt{arr[i]}, C computes the address
+    $1000+\texttt{i}\times\texttt{sizeof(int)}$ and reads an
+    \texttt{int} (four bytes) from that address.
+    \begin{itemize}
+    \item \lstinline{&arr[0]}: 1000
+    \item \lstinline{&arr[1]}: 1004
+    \item \lstinline{&arr[2]}: 1008
+    \end{itemize}
+  \item (Recall that \lstinline{&x} means ``the address of \texttt{x}''.)
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{One-dimensional arrays in C}
+
+  \begin{minipage}{0.65\linewidth}
+  \lstinputlisting[language=C,basicstyle=\scriptsize]{code/1darray.c}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\linewidth}
+    \scriptsize
+\begin{verbatim}
+$ gcc 1darray.c -o 1darray
+$ ./1darray
+&arr: 0x7ffee169ba80
+arr:  0x1bb42a0
+&arr[0]: 0x1bb42a0 arr[0]: 0
+&arr[1]: 0x1bb42a4 arr[1]: 2
+&arr[2]: 0x1bb42a8 arr[2]: 4
+&arr[3]: 0x1bb42ac arr[3]: 6
+&arr[4]: 0x1bb42b0 arr[4]: 8
+&arr[5]: 0x1bb42b4 arr[5]: 10
+&arr[6]: 0x1bb42b8 arr[6]: 12
+&arr[7]: 0x1bb42bc arr[7]: 14
+&arr[8]: 0x1bb42c0 arr[8]: 16
+&arr[9]: 0x1bb42c4 arr[9]: 18
+\end{verbatim}
+  \end{minipage}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Multi-dimensional arrays}
+
+  \begin{itemize}
+  \item Machines (and C) provide a \textit{one-dimensional memory (or
+      index) space}.
+  \item When we want multi-dimensional arrays (and we do!) we need to
+    specify a \textit{mapping} between our desired multi-dimensional
+    space and the machine's single-dimensional space.
+  \end{itemize}
+
+  \begin{center}
+    This is an \textit{index function}.
+  \end{center}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Index functions}
+
+\begin{center}
+  \textbf{An index function maps a $d$-dimensional index to a
+    single-dimensional index.}
+\end{center}
+
+\begin{block}{The type of index functions}
+\begin{equation*}
+  I : \mathbb{N}^{d} \rightarrow \mathbb{N}
+\end{equation*}
+\end{block}
+
+\begin{center}
+  Index functions are not necessarily literal C functions, but a
+  \textit{conceptual} description of how the array is laid out in
+  memory.
+\end{center}
+
+\pause
+
+\begin{block}{Inverse index functions}
+\begin{equation*}
+  I^{-1} : \mathbb{N} \rightarrow \mathbb{N}^{d}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}
+
+\begin{equation*}
+  \begin{pmatrix}
+    11 & 12 & 13 & 14 \\
+    21 & 22 & 23 & 24 \\
+    31 & 32 & 33 & 34
+  \end{pmatrix}
+\end{equation*}
+
+How do we lay out this matrix in memory?\pause
+
+\bigskip
+
+\begin{description}
+\item[\textbf{Row-major order}:] where elements of each \textit{row} are
+  contiguous in memory:
+
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    11&12&13&14&21&22&23&24&31&32&33&34\\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  with index function
+  \[
+    (i,j) \mapsto i\times 4 + j
+  \]
+
+\pause
+
+\item[\textbf{Column-major order}:] where elements of each \textit{column}
+  are contiguous in memory:
+
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    11&21&31&12&22&32&13&23&33&14&24&34\\
+    \hline
+  \end{tabular}
+  \end{center}
+
+  with index function
+  \[
+    (i,j) \mapsto j\times 3 + i
+  \]
+\end{description}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Two-dimensional index functions for $n\times{}m$ arrays}
+
+  \begin{minipage}{0.45\textwidth}
+    \textbf{Row-major indexing}
+    \bigskip
+    \begin{equation*}
+      (i,j) \mapsto i\times m + j
+    \end{equation*}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\textwidth}
+    \textbf{Column-major indexing}
+    \bigskip
+    \begin{equation*}
+      (i,j) \mapsto j\times n + i
+    \end{equation*}
+  \end{minipage}
+
+  \bigskip
+
+  \textbf{Intuition:}
+  \begin{itemize}
+  \item Row-major indexing first \textit{skips} $i$ rows
+    each comprising $m$ elements, then jumps $j$ elements into the row
+    we reach.
+  \item This is why $n$ (the number of rows) is not used for row-major
+    indexing.
+  \end{itemize}
+  \bigskip Column-major has same intuition, but we skip size-$n$
+  columns instead.
+
+\end{frame}
+
+\begin{frame}[fragile,fragile]
+  \frametitle{Two-dimensional arrays in C}
+
+\begin{equation*}
+  \begin{pmatrix}
+    11 & 12 & 13 & 14 \\
+    21 & 22 & 23 & 24 \\
+    31 & 32 & 33 & 34
+  \end{pmatrix}
+\end{equation*}
+
+\begin{minipage}{0.4\linewidth}
+\begin{lstlisting}[language=C]
+int *A =
+  malloc(3*4*sizeof(int));
+A[0] = 11; // first row
+A[1] = 12; // first row
+A[2] = 13; // first row
+A[3] = 14; // first row
+A[4] = 21; // second row
+...
+A[11] = 34;
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\linewidth}
+\begin{lstlisting}[language=C]
+int *A =
+  malloc(3*4*sizeof(int));
+A[0] = 11; // first col
+A[1] = 21; // first col
+A[2] = 31; // first col
+A[3] = 12; // second col
+A[4] = 22; // second col
+...
+A[11] = 34;
+\end{lstlisting}
+\end{minipage}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Index functions as C functions}
+
+\begin{lstlisting}
+int idx2_rowmajor(int n, int m, int i, int j) {
+  return i * m + j;
+}
+
+int idx2_colmajor(int n, int m, int i, int j) {
+  return j * n + i;
+}
+\end{lstlisting}
+
+  \bigskip
+
+  Useful if you get confused when writing index calculations by hand
+  (I often do!)
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Careful!}
+
+  Consider indexing the $3\times{}4$ array from before with the
+  expression
+
+\begin{center}
+\lstinline[language=C]{A[idx2_rowmajor(n, m, 2, 5)]}.
+\end{center}
+
+\begin{itemize}
+\item Trying to access index $(2,5)$---conceptually out of bounds.
+\item Index function translates to the flat index $2\times{}3+5=11$.
+\item This is \textit{in-bounds} for the 12-element flat array we use
+  to represent our matrix!
+\item Our program will not crash, but this is probably a bug.
+\end{itemize}
+
+\pause
+
+\begin{lstlisting}
+int idx2_rowmajor(int n, int m, int i, int j) {
+  assert(i >= 0 && i < n);
+  assert(j >= 0 && j < m);
+  return i * m + j;
+}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Higher dimensions}
+
+  For a $d$-dimensional row-major array of shape
+  $n_{0} \times{} \cdots \times{} n_{d-1}$, the index function where $p$
+  is a $d$-dimensional index point is
+
+\begin{equation*}
+  p \mapsto \sum_{0 \leq i < d} p_{i}\times \prod_{i<j<d} n_{j}
+\end{equation*}
+
+where $p_{i}$ gets the $i$th coordinate of $p$, and the product of an
+empty series is $1$.
+
+\bigskip
+
+\textbf{Intuition:} $p_{i}$ tells us how many ``subarrays'' of size
+$n_{i+1}...\times...n_{d-1}$ we need to skip.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Example: four-dimensional indexing}
+
+  Suppose we have an row-major array of shape
+  \[
+    n_{0} \times n_{1} \times n_{2} \times n_{3}
+  \]
+  and we wish to compute the flat index of element position
+  \[
+    (p_{0}, p_{1}, p_{2}, p_{3})
+  \]
+
+  We then have to sum these terms where the \textit{strides} $s_{i}$
+  depend on the array size:
+
+  \[
+    \begin{array}{rl}
+      & p_{0} \times \only<1>{s_{0}}\only<2>{n_{1} \times n_{2} \times n_{3}} \\
+      + & p_{1} \times \only<1>{s_{1}}\only<2>{n_{2} \times n_{3}} \\
+      + & p_{2} \times \only<1>{s_{2}}\only<2>{n_{3}} \\
+      + & p_{3} \times \only<1>{s_{3}}\only<2>{1}
+    \end{array}
+  \]
+
+  \pause
+
+  The stride $s_{i}$ is the product $\prod_{i<j<4} n_{j}$ of the array
+  size after dropping the first $i+1$ dimensions.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Size passing}
+
+  Since we represent arrays as the address of their first element, we
+  must manually pass along the size when we call a function with an
+  array.
+
+\lstinputlisting[language=C,firstline=1,lastline=7]{code/sumrows.c}
+
+\textbf{As usual:} C will not protect us if we pass the wrong size.
+Be careful.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Slicing}
+
+  \begin{itemize}
+  \item When using row-major order, the elements of each row are
+    adjacent in memory.
+  \item This allows us to perform efficient \textit{slicing}, by
+    taking the address of the first element in a row.
+  \end{itemize}
+
+\lstinputlisting[language=C,firstline=9,lastline=14]{code/sumrows.c}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusions}
+
+  \begin{itemize}
+  \item C's built-in arrays are suitable only for small arrays,
+    typically of static size.
+  \item Dynamic allocation can create single-dimensional dynamic
+    arrays on the heap.
+  \item We can represent multi-dimensional arrays as
+    single-dimensional arrays, by specifying an index function.
+  \item Careful when indexing these home-made arrays---the C
+    language is not much help.
+  \end{itemize}
+
+\end{frame}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
