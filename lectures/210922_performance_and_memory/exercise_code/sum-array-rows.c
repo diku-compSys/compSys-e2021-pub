@@ -28,7 +28,7 @@ int main (int argc, char* argv[]) {
     printf("I want two ints as arguments!\n");
     return EXIT_SUCCESS;
   }
-  res = sscanf(argv[1],"%lu", &n);
+  res = sscanf(argv[2],"%lu", &n);
   if (res == BAD_INPUT) {
     printf("I want two ints as arguments!\n");
     return EXIT_SUCCESS;
