@@ -38,7 +38,7 @@ The amount of memory read by a call `test(limit,stride)` depends on
 double test_MiB(int limit, int stride);
 ```
 
-This function returns the number of
+The function must return the number of
 [MiB](https://en.wikipedia.org/wiki/Mebibyte) accessed by a
 corresponding call to `test(limit,stride)`.  Look at the definition of
 `test()` and try to figure out how many bytes it accesses, then divide
