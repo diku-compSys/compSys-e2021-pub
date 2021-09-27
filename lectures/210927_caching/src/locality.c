@@ -19,9 +19,9 @@ void test(int limit, int stride) {
   // compiler optimiser from messing unpredictably with it.
   for (int i = 0; i < limit-stridex4; i += stridex4) {
     acc = acc + data[i];
-    acc = acc + data[i+1];
-    acc = acc + data[i+2];
-    acc = acc + data[i+3];
+    acc = acc + data[i+1*stride];
+    acc = acc + data[i+2*stride];
+    acc = acc + data[i+3*stride];
   }
 
   // Avoid the optimiser removing the computation.
