@@ -194,5 +194,6 @@ in a nicer way and show us!  Perhaps interactively?
 
 * PP 6.7, page 644
 * PP 6.8, page 645
-* HP 6.24, page 685
-* HP 6.29, page 687
+* HP 6.29, page 687 (*important*: something like this is likely to appear at the exam)
+* HP 6.30, page 688
+* HP 6.31, page 688
