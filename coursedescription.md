@@ -108,6 +108,8 @@ Week 45, expect no teaching Wednesday, but Friday 13:15 - 15:00 (yet to be organ
 
 ### Exercise classes
 
+#### Block 1
+
  * Class 1: Henriette
    * Monday: NBB 01.1.H.142
    * Wednesday: DIKU 1-0-04
@@ -125,6 +127,30 @@ Week 45, expect no teaching Wednesday, but Friday 13:15 - 15:00 (yet to be organ
    * Wednesday: DIKU 1-0-30
  * Class 6: Joachim
    * Monday: NBB 01.3.I.164
+   * Wednesday: DIKU 1-0-37
+
+ * Class 7: Magnus
+   * Online 
+
+#### Block 2
+
+ * Class 1: Henriette
+   * Monday: NBB 01.1.H.142
+   * Wednesday: DIKU 1-0-04
+ * Class 2: Jens
+   * Monday: NBB 01.1.I.156
+   * Wednesday: DIKU 1-0-10
+ * Class 3: Jonas
+   * Monday: NBB 01.2.H.142
+   * Wednesday: DIKU 1-0-22
+ * Class 4: Jóhann
+   * Monday: NBB 01.2.I.158
+   * Wednesday: DIKU 1-0-26
+ * Class 5: Lars
+   * Monday: NBB 01.3.H.142
+   * Wednesday: DIKU 1-0-30
+ * Class 6: Joachim
+   * Monday: HCØ A111
    * Wednesday: DIKU 1-0-37
 
  * Class 7: Magnus
@@ -148,6 +174,9 @@ https://nexs.ku.dk/kontakt/findvej/kort_norre-campus/
    * TA organised café classes for help with assignments and exercises.
 
 ### Rooms
+
+#### Block 1
+
 Wednesday: 
  * NBB 01.1.H.142
  * NBB 01.1.I.156
@@ -160,6 +189,20 @@ Friday:
  * A111
  * C103 (only if others are full)
 
+#### Block 2
+
+Wednesday: 
+ * DIKU 1-0-04
+ * DIKU 1-0-10
+ * DIKU 1-0-18
+ * DIKU 1-0-22
+ * DIKU 1-0-14
+
+Friday:
+ * HCØ A105
+ * HCØ A104
+ * HCØ A102
+ * HCØ A101
 
 
 ## Study group formation
