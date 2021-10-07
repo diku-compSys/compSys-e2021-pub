@@ -1,0 +1,12 @@
+*
+!*.md
+!*.md
+!*.c
+!*.h
+!*.input
+!.gitignore
+!*.pdf
+!Makefile
+!README
+!csapp_src
+!lecture_code
