@@ -215,7 +215,7 @@ The instructors can also be the link to the study administration; if there is so
 There are 7-8 assignment in total during the course with deadline roughly every second week with the following deadlines.
 
 
-|                                   | Expected deadline   |
+| Topic                             | Expected deadline   |
 | --------------------------------- | ------------------- |
 | A0: Data representation           | 19 Sep @ 16:00      |
 | A1: Dynamic memory and caching    | 10 Oct @ 16:00      |
