@@ -4,3 +4,4 @@
 !*.md
 !.gitignore
 !*.c
+!lecture_code
