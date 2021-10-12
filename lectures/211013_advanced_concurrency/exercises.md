@@ -2,7 +2,7 @@
 
 Solve the exercises from the end of the [reading material on condition
 variables](http://pages.cs.wisc.edu/~remzi/OSTEP/threads-cv.pdf).  The
-files you need are in the `csapp_src/` directory.
+files you need are in the `ostep_src/` directory.
 
 ## And a fun one
 
