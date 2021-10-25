@@ -97,7 +97,7 @@ unsigned int Sleep(unsigned int secs)
 {
     unsigned int rc;
 
-    if ((rc = sleep(secs)) < 0)
+    if ((rc = sleep(secs)) != 0)
 	unix_error("Sleep error");
     return rc;
 }
@@ -605,7 +605,7 @@ static ssize_t rio_read(rio_t *rp, char *usrbuf, size_t n)
 
     /* Copy min(n, rp->rio_cnt) bytes from internal buf to user buf */
     cnt = n;          
-    if (rp->rio_cnt < n)   
+    if (rp->rio_cnt < (int)n)   
 	cnt = rp->rio_cnt;
     memcpy(usrbuf, rp->rio_bufptr, cnt);
     rp->rio_bufptr += cnt;
@@ -657,7 +657,7 @@ ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen)
     int n, rc;
     char c, *bufp = usrbuf;
 
-    for (n = 1; n < maxlen; n++) { 
+    for (n = 1; n < (int)maxlen; n++) { 
         if ((rc = rio_read(rp, &c, 1)) == 1) {
 	    *bufp++ = c;
 	    if (c == '\n') {
@@ -691,7 +691,7 @@ ssize_t Rio_readn(int fd, void *ptr, size_t nbytes)
 
 void Rio_writen(int fd, void *usrbuf, size_t n) 
 {
-    if (rio_writen(fd, usrbuf, n) != n)
+  if (rio_writen(fd, usrbuf, n) != (int)n)
 	unix_error("Rio_writen error");
 }
 

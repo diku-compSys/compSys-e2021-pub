@@ -4,7 +4,6 @@
 
 int main(int argc, char** argv)
 {
-    char c;
     struct stat stat;
 
     assert(argc == 3);
@@ -15,7 +14,7 @@ int main(int argc, char** argv)
     size_t from_size = stat.st_size;
 
     void *from_p = Mmap(NULL, from_size, PROT_READ,
-                        MAP_FILE | MAP_PRIVATE | MAP_NOCACHE,
+                        MAP_FILE | MAP_PRIVATE,
                         from, 0);
 
     assert(ftruncate(to, from_size) == 0);
