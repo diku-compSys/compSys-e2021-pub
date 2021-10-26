@@ -100,7 +100,7 @@ Exercises will mainly be with physical help, but we expect also to schedule an o
  * Wednesdays 13:15-15:00
    * These classes are dedicated to exercises and not making assignments.
 
-Week 45, expect no teaching Wednesday, but Friday 13:15 - 15:00 (yet to be organised)
+Week 45, no teaching Wednesday, but Friday 10:15 - 12:00
 
 <!-- See [skema.ku.dk](https://skema.ku.dk/tt/tt.asp?SDB=KU2021&language=DK&folder=Reporting&style=textspreadsheet&type=module&idtype=id&id=95292&weeks=1-27&days=1-5&periods=1-68&width=0&height=0&template=SWSCUST2+module+textspreadsheet) for room details.
  -->
@@ -188,6 +188,20 @@ Friday:
  * A110 
  * A111
  * C103 (only if others are full)
+
+No cafés in week 45.
+
+#### Week 46
+
+Wednesday 13:15 - 15:00 
+* DIKU 1-0-04
+* DIKU 1-0-34 
+* DIKU 1-0-37
+
+Friday 13:15 - 15:00 
+* DIKU 1-0-04
+* DIKU 1-0-34 
+* DIKU 1-0-37
 
 #### Block 2
 
