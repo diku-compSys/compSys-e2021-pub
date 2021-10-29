@@ -264,7 +264,10 @@ When your TA has corrected your submission all members of the group will be give
 
 ## Exam qualification
 
-To qualify for the exam you are required to achieve at least 50 % of the total number of points in the assignments. A0 and A1 is in total considered the same size as the following assignments: this means that points given in A0 is weighted 1/3 while A1 is weighted 2/3.
+To qualify for the exam you are required to achieve at least 50 % of the total number of points in the assignments. 
+
+(NB! the text included a part where A0 and A1 had an collected weight. This was a reference to the assignments for last year, and should have been removed earlier.)
+<!-- A0 and A1 is in total considered the same size as the following assignments: this means that points given in A0 is weighted 1/3 while A1 is weighted 2/3. -->
 
 Furthermore, we will require that you show a reasonable understanding of all parts (ARK, OS, CN) of the course. This is firstly interpreted as achieving points at least 40 % points in each the of topics. To optimise your understanding of the course, and since all assignments are in the syllabus, we encourage you to work with and hand in all sets.
 
