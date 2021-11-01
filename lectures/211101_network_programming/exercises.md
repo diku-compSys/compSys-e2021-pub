@@ -1,4 +1,4 @@
-# Exercises for Wednesday Dec 04, 2019
+# Exercises for Monday Nov 01, 2021
 
 ## Socket Programming Preparatory Session
 
