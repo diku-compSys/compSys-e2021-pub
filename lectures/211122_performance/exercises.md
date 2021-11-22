@@ -2,8 +2,8 @@
 
 ## Exercises from Chapter 8 of Bryant and O'Hallaron on "Control Flowr"
 
-* 8.23
 * 8.15
+* 8.23
 
 ## Exercises from Chapter 12 of Bryant and O'Hallaron on "Concurrent Programming"
 
