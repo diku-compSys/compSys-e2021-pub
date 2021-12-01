@@ -15,9 +15,14 @@ Hvilken systematik kan du få øje på?
 
 Betragt de aritmetiske instruktioner (dem indkodet med 'aaaa' i Prime)
 og hold dem op imod datavejen. Hvilke af de 10 instruktioner bruger ALUen?
-Opstil et logisk udtryk der som input har de fire bit i 'aaaa' og som
+Opstil et logisk udtryk [*] der som input har de fire bit i 'aaaa' og som
 output har et enkelt signal der bliver sandt, netop når indkodningen
 svarer til en instruktion som skal bruge ALUen.
+
+[*] Her menes et udtryk i 'C' som udelukkende bruger boolske operatorer
+og arbejder på boolske værdier. Så givet fire boolske variable a0,a1,a2 og a3
+svarende til de fire bit, skal du lave et udtryk i C som giver sandt eller
+falsk, alt efter om ALUen skal bruges.
 
 ## Opgave 4
 
