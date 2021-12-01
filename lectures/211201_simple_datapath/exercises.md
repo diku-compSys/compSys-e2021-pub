@@ -24,6 +24,10 @@ og arbejder på boolske værdier. Så givet fire boolske variable a0,a1,a2 og a3
 svarende til de fire bit, skal du lave et udtryk i C som giver sandt eller
 falsk, alt efter om ALUen skal bruges.
 
+Det kan nogen gange hjælpe at opstille en sandhedstabel for problemet først.
+En sandhedstabel for fire variable har 16 rækker indeholdende alle kombinationer
+af de fire variable. For hver kombination angives tillige output.
+
 ## Opgave 4
 
 Midt i datavejen, mellem register-banken og regne-enhederne, sidder en
