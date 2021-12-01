@@ -149,10 +149,10 @@ Week 45, no teaching Wednesday, but Friday 10:15 - 12:00
  * Class 5: Lars
    * Monday: NBB 01.3.H.142
    * Wednesday: DIKU 1-0-30
- * Class 6: Joachim
-   * Monday: HCØ A111
+ * Class 6: Joachim (CLOSED)
+<!--    * Monday: HCØ A111
    * Wednesday: DIKU 1-0-37
-
+ -->
  * Class 7: Magnus
    * Online 
 
