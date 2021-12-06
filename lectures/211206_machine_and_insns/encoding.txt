@@ -1,0 +1,91 @@
+x86prime instructions and encoding
+----------------------------------
+
+Encoding:                                   Assembler           Operation
+
+00000000 0000ssss                           ret s               return from function call
+0001aaaa ddddssss                           op s,d              reg/reg arithmetic (see below)
+00100001 ddddssss                           movq s,d            reg->reg copy
+00110001 ddddssss                           movq (s),d          load (memory -> reg copy)
+00111001 ddddssss                           movq d,(s)          store (reg -> memory copy)
+-
+0100cccc ddddssss pp...32...pp              cb<c> s,d,p         compare and continue at p if... (see below)
+01001110 dddd0000 pp...32...pp              call p,d            function call
+01001111 00000000 pp...32...pp              jmp p               continue at p
+0101aaaa dddd0000 ii...32...ii              op $i,d             constant/reg arithmethic(see below)
+01100100 dddd0000 ii...32...ii              movq $i,d           constant -> register
+01110101 ddddssss ii...32...ii              movq i(s),d         load (memory -> reg copy)
+01111101 ddddssss ii...32...ii              movq d,i(s)         store (reg -> memory copy)
+-
+10000001 ddddssss                           leaq (s),d          s -> d
+10010010 dddd0000 zzzzvvvv                  leaq (,z,v),d       z*v -> d
+10010011 ddddssss zzzzvvvv                  leaq (s,z,v),d      s+z*v -> d
+10100100 dddd0000 ii...32...ii              leaq i,d            i -> d
+10100101 ddddssss ii...32...ii              leaq i(s),d         i+s -> d
+10110110 dddd0000 zzzzvvvv ii...32...ii     leaq i(,z,v),d      i+z*v -> d
+10110111 ddddssss zzzzvvvv ii...32...ii     leaq i(s,z,v),d     i+s+z*v -> d
+-
+1111cccc dddd0000 ii...32...ii pp...32...pp cb<c> $i,d,p        compare and continue at p if... (see below)
+
+Explanations:
+
+aaaa indicates the kind of arithmetic operation. All operate on full 64 bits:
+
+0000 add  addition
+0001 sub  subtraction
+0010 and  bitwise and
+0011 or   bitwise or
+0100 xor  bitwise xor
+0101 mul  unsigned multiplication
+0110 sar  shift arithmetic right (preserve topmost bit)
+0111 sal  shift arithmetic left (zero into lsb, do not preserve topmost bit)
+1000 shr  shift (logical) right (zero into topmost bit)
+1001 imul signed multiplication
+
+d,s and z are registers:
+
+0000 %rax     1000 %r8
+0001 %rbc     1001 %r9
+0010 %rcx     1010 %r10
+0011 %rdx     1011 %r11
+0100 %rbp     1100 %r12
+0101 %rsi     1101 %r13
+0110 %rdi     1110 %r14
+0111 %rsp     1111 %r15
+
+v is a scale factor encoded into the field vvvv in the form of a shift amount as follows:
+
+vvvv v
+0000 1
+0001 2
+0010 4
+0011 8
+
+ii...32...ii is a 32 bit signed immediate
+pp...32...pp is a 32 bit target address
+
+<c> is a condition mnemonic used in compare-and-branch. The compare-and-branch
+instruction cb<c> is not part of the original x86 instruction set, but the
+conditions in x86prime carry the same meaning as for x86.
+
+Example: cble %rdi,%rbp,target     = if %rdi <= %rbp (signed) then jump to target
+
+Encoding          Semantic
+0000 e            Equal
+0001 ne           Not equal
+0010 <reserved>
+0011 <reserved>
+0100 l            less (signed)
+0101 le           less or equal (signed)
+0110 g            greater (signed)
+0111 ge           greater or equal (signed)
+1000 a            above (unsigned)
+1001 ae           above or equal (unsigned)
+1010 b            below (unsigned)
+1011 be           below or equal (unsigned)
+11xx <reserved>
+
+Note that signed and unsigned comparisons are different.
+
+call places the return address in a register instead of pushing it onto the stack.
+ret returns to the address in a register instead of popping it from the stack.
