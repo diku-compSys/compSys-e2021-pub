@@ -18,3 +18,7 @@ Dette generer en fil med filendelsen .hex, som viser hvordan .prime-programmet e
 Kør 'python prun.py [filnavn på .hex-program] [start-funktion]'
 Start funktionen er eksempelvis (ikke nødvendigvis) main.
 Brug -show for at se simulationen
+
+Indsæt værktøjerne i PATH:
+1. Kør 'install.sh' som admin
+2. Koden kan nu køres fra terminalen fra hvor som helst(e.g. 'primify myfile.c')
