@@ -3,7 +3,7 @@ Online-værktøjerne til x86prime anvendes på følgende måde:
 0. Download x86prime_tools/ fra CompSys-depotet
 
 1. Oversæt c-program til x86:
-Kør 'python gcc-online.py [filnavn på .c-program]'
+Kør 'python gcc-online.py -S -Og -fno-optimize-sibling-calls -fcf-protection=none [filnavn på .c-program]'
 Dette generer en x86 assembler fil fra dit c-program, og giver den filendelsen .s
 
 2. Oversæt x86 assembler til x86prime
