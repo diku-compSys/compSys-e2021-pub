@@ -20,5 +20,10 @@ Start funktionen er eksempelvis (ikke nødvendigvis) main.
 Brug -show for at se simulationen
 
 Indsæt værktøjerne i PATH:
-1. Kør 'install.sh' som admin
-2. Koden kan nu køres fra terminalen fra hvor som helst(e.g. 'primify myfile.c')
+1. Kør `chmod u+x install.sh`
+2. Kør 'install.sh' som admin
+3. Koden kan nu køres fra terminalen fra hvor som helst(e.g. 'primify myfile.c')
+
+Lav filerne eksekverbar:
+1. Kør `chmod u+x *.py`
+2. Koden kan nu køres som lokale programmer (e.g. './gcc-online.py myfile.c')
