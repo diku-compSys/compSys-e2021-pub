@@ -36,7 +36,7 @@ Betydningen af bogstaverne er:
  * W: Writeback, opdatering af registre
 
 Alle instruktioner passerer gennem de samme 6 trin. Multiplikation udføres over 3 pipeline-trin,
-E, M og Y. Et ubetinget hop udføres i D-trinnet, dvs den instruktion der hoppes til kan blive
+X, M og Y. Et ubetinget hop udføres i D-trinnet, dvs den instruktion der hoppes til kan blive
 hentet i cyklussen efter. Et betinget hop udføres derimod først i X-trinnet.
 
 Der er fuld forwarding af operander fra en instruktion til en afhængig instruktion.
