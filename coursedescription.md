@@ -237,7 +237,7 @@ There are 7-8 assignment in total during the course with deadline roughly every 
 | A3: Client network distribution   | 21 Nov @ 16:00      |
 | A4: P2P networking and security   | 05 Dec @ 16:00      |
 | A5: Simple architecture.          | 19 Dec @ 16:00      |
-| A6: Pipelined architecture        | 08 Jan @ 16:00      |
+| A6: Pipelined architecture        | 09 Jan @ 16:00      |
 
  The assignments will be graded with points from 0 to 4 and it is not possible to re-hand-in any of the assignments.
 
