@@ -44,8 +44,10 @@
 | 1    | 05 Jan | CN    | Michael  | Network layer, data plane                                                     | KR 4.1 - 4.2.4, 4.3 (Optional read - [Design Philosophy of DARPA Internet Protocols](http://www.cs.princeton.edu/courses/archive/spr14/cos461/papers/clark88.pdf)) |
 |      |        |       |          | Hand-in A6 -- Pipeline processor                                              |                                                                                                                                                                    |
 | 2    | 10 Jan | CN    | Michael  | Network layer, control plane                                                  | KR 5.1 - 5.3                                                                                                                                                       |
-|      | 12 Jan | CN    | Michael  | Link Layer and Networks Security (lecture from 9:15)                          | KR 6.1 - 6.4.3, KR 8.5 - 8.6, 8.9 (8.9 only cursorily)                                                                                                                             |
-| 3    |        |       | Everyone | Exam question session, recap and evaluation; St. UP1                          |                                                                                                                                                                    |
+|      | 12 Jan | CN    | Michael  | Link Layer and Networks Security (lecture from 9:15)                          | KR 6.1 - 6.4.3, KR 8.5 - 8.6, 8.9 (8.9 only cursorily)                                                                                                             |
+|      | 12 Jan | Recap | TAs      | Recap sessions from 13:15 to 17:00                                            | | 
+|      | 14 Jan | Recap | TAs      | Recap sessions from 13:15 to 15:00                                            | | 
+| 4    | 24 Jan |       | Everyone | Exam question session, recap and evaluation                                   |                                                                                                                                                                    |
 |      | 26 Jan |       |          | CompSys Exam                                                                  |                                                                                                                                                                    |
 
 
