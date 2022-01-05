@@ -55,7 +55,7 @@ The general outline of CompSys will be the following:
 Be aware that CompSys is a semester course, which means that we will be teaching (including having normal exercise and assignments) throughout the exam period (weeks 44 and 45) of Block 1.
 
 ### Exam
-The exam is a written 4-hour open-book exam and will be held on Wednesday Jan 22. Course syllabus is all reading material, including the assignments.
+The exam is a written 4-hour open-book exam and will be held on Wednesday Jan 26. Course syllabus is all reading material, including the assignments.
 We will later publish example sets based on the previous exam iteration and further details on the exam procedure. It will be possible to get limited feedback on the exam performance afterwards.
 
 ### Exercises and Cafées
@@ -149,10 +149,10 @@ Week 45, no teaching Wednesday, but Friday 10:15 - 12:00
  * Class 5: Lars
    * Monday: NBB 01.3.H.142
    * Wednesday: DIKU 1-0-30
- * Class 6: Joachim
-   * Monday: HCØ A111
+ * Class 6: Joachim (CLOSED)
+<!--    * Monday: HCØ A111
    * Wednesday: DIKU 1-0-37
-
+ -->
  * Class 7: Magnus
    * Online 
 
@@ -237,7 +237,7 @@ There are 7-8 assignment in total during the course with deadline roughly every 
 | A3: Client network distribution   | 21 Nov @ 16:00      |
 | A4: P2P networking and security   | 05 Dec @ 16:00      |
 | A5: Simple architecture.          | 19 Dec @ 16:00      |
-| A6: Pipelined architecture        | 08 Jan @ 16:00      |
+| A6: Pipelined architecture        | 09 Jan @ 16:00      |
 
  The assignments will be graded with points from 0 to 4 and it is not possible to re-hand-in any of the assignments.
 
