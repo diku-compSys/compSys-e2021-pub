@@ -5,6 +5,7 @@
 * P3 (repeated from the last exercise session)
 * P4 (repeated from the last exercise session)
 * P8
+* P9
 * P11
 
 ## Wireshark lab
